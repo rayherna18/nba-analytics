@@ -18,8 +18,8 @@ headers = {
 params = {"id": player_id, "season": "2023"}
 
 # Database credentials
-server_name = 'nba-streaming-server.database.windows.net'
-database_name = 'nbastreaming'
+server_name = 'nba-streaming-server.database.windows.net'  # Change with project reviewer's azure sql server name
+database_name = 'nbastreaming'                         # Change with project reviewer's azure sql db name
 username = os.getenv("DB_USER")
 password = os.getenv("DB_PASS")
 driver = '{ODBC Driver 18 for SQL Server}'

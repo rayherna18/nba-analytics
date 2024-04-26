@@ -39,8 +39,8 @@ if response.status_code == 200:
             print("\n")
 
     # Connect to your Azure SQL Server database
-    server_name = 'nba-streaming-server.database.windows.net'
-    database_name = 'nbastreaming'
+    server_name = 'nba-streaming-server.database.windows.net'   # Change with project reviewer's azure sql server name
+    database_name = 'nbastreaming'                      # Change with project reviewer's azure sql db name
     table_name = 'NBA_PLAYERS'  
     username = os.getenv("DB_USER")
     password = os.getenv("DB_PASS")

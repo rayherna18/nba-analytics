@@ -20,10 +20,10 @@ params = {"season": "2023",}
 response = requests.get(url, headers=headers, params=params)
 
 # Connect to Azure SQL Database
-server_name = 'nba-streaming-server.database.windows.net'
-database_name = 'nbastreaming'
-username = os.getenv("DB_USER")
-password = os.getenv("DB_PASS")
+server_name = 'nba-streaming-server.database.windows.net' # Change with project reviewer's azure sql server name
+database_name = 'nbastreaming'                          # Change with project reviewer's azure sql db name  
+username = os.getenv("DB_USER")                           
+password = os.getenv("DB_PASS")                         
 table_name = 'NBA_GAMES2023'  
 driver = '{ODBC Driver 18 for SQL Server}'
 connection_string = f'DRIVER={driver};SERVER={server_name};PORT=1433;DATABASE={database_name};UID={username};PWD={password}'
