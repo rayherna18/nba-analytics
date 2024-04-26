@@ -220,7 +220,12 @@ sudo docker build -t [registeryname].azurecr.io/nba-teamstats:latest .
 ```
 - Use following command to build nba-staticstats image:
 ```
-sudo docker build -t [registeryname].azurecr.io/nba-staticstats:latest .
+sudo docker build -t nba-staticstats .
+```
+
+- We don't intend on automating this script so we can just run it now with:
+```
+sudo docker run nba-staticstats
 ```
 3. Login to Container Register on CLI
 - Enter the following command. You will be prompted to enter your registry's name and a valid password (check your access keys in your registry's settings).
