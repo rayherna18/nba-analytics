@@ -59,7 +59,7 @@ sudo apt install python3
 - nba_teamdata will have scripts found in 'team scripts'
 - nba_playerdata will have scripts found in 'player scripts' and 'static 'scripts'
 - nba_staticdata will have scripts found in 'static scripts'.
-- Each directory will have a Dockerfile. The players Dockerfile looks like
+- Each directory will have a Dockerfile. Remember to set all sensitive information (api key, host url, server credentials etc) in the Dockerfile. The players Dockerfile looks like
 ```
 # Use official Python runtime as a parent image
 FROM python:3.8-slim
@@ -211,23 +211,57 @@ python-dotenv==0.19.1
 2. Build Docker Images
 - Use following command to build nba-playerstats image
 ```
-sudo docker build -t [registername].azurecr.io/nba-playerstats:latest .
+sudo docker build -t [registeryname].azurecr.io/nba-playerstats:latest .
 ```
 
 - Use following command to build nba-teamstats image
 ```
-sudo docker build -t [registername].azurecr.io/nba-teamstats:latest .
+sudo docker build -t [registeryname].azurecr.io/nba-teamstats:latest .
 ```
 - Use following command to build nba-staticstats image
 ```
-sudo docker build -t [registername].azurecr.io/nba-staticstats:latest .
+sudo docker build -t [registeryname].azurecr.io/nba-staticstats:latest .
 ```
 3. Login to Container Register on CLI
 - Enter the following command. You will be prompted to enter your registry's name and a valid password (check your access keys in your registry's settings)
 ```
-sudo docker login [registername].azurecr.io
+sudo docker login [registeryname].azurecr.io
+```
+4. Push image to CR
+- Now enter the following command to push image to container registry. Now your image should appear on your CR on the website. Repeat for player and team images.
+```
+sudo docker push [registryname].azurecr.io/nba-playerstats:latest
 ```
 
+5. Create Container Instance with Container Registry Image
+- Enter the following command. A CI will now appear on the Azure website.
+- Repeat for both player and team images.
+```
+az container create --resource-group <resource_group_name> --name <container_instance_name> \
+    --image [registryname].azurecr.io/[containerregistryimagename] \
+    --registry-login-server [registryname].azurecr.io \
+    --registry-username <registry_username> \
+    --registry-password <registry_password> \
+    --dns-name-label <container_instance_name> \
+    --ports 80 \
+```
+6. Create Logic App
+- Return to Azure website and search 'Logic Apps' in search bar
+- Select 'Add' on Logic Apps page.
+- Fill out form, putting the same Resource Group as other resources have.
+- Set 'Publish' to 'Workflow'. Disable Zone Redundancy. 
+- Set plan type to 'Consumption'.
+- For Storage, create a storage account if one isn't made already.
+- Enable public access on 'Networking' tab.
+- Create Logic App when all necessary fields are filled.
 
+7. Automate with Logic App
+- Go to Logic App and view 'Logic App Designer' under 'Development Tools'
+- Click on the (+) sign to add a Trigger. This is what will cause the scripts to run.
+- Set Trigger to be "Recurrence", "Interval" set to "1", "Frequency" set to "Day", set "Timezone" to "Eastern Time" and "At These Hours" to "2". Save
+- Add Action to "Azure Container Instance", specifically "Start containers in container group".
+- Provide subscription id, the resource group the CI is in and its name. Save and repeat for both instances.
+
+8. Allow Logic App to trigger so data can be requested and inserted into DB.
 
 ## View Data with Power BI
