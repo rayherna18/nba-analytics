@@ -10,7 +10,7 @@ Project for Cloud Computing (CSC4311) that uses containerized Python scripts on 
 
 
 
-## Setting up Cloud Environment
+## Setting up Cloud Environment & Scripts
 1. **Create a Resource Group**
 - Search 'Resource Group' in Azure search bar.
 - Fill in 'Resource Group' name, 'Subscription' & 'Region'.
@@ -264,4 +264,20 @@ az container create --resource-group <resource_group_name> --name <container_ins
 
 8. Allow Logic App to trigger so data can be requested and inserted into DB.
 
-## View Data with Power BI
+## Import Data into Power BI
+
+1. Download [PowerBI](https://powerbi.microsoft.com/en-us/desktop/) if not already installed (Only available for Windows).
+2. Launch Power BI.
+3. Open new Report. When prompted to 'Add data to your report' select 'Import data from SQL server'
+4. Enter the server name and database name respectively (found on Azure).
+5. Enter login credentials for the Azure SQL server (username + password). Verify that 'data connectivity mode' is set to 'Import'.
+6. If set up correctly, a pop up window will appear with all the tables you have currently stored on the database. Check off the tables you are interested in seeing statistics for.
+7. Load data into Power BI report.
+
+## Make Visuals with Power BI
+1. Report starts off with no visuals until you decide on what data you want to include and how you want to display it.
+2. Click on "Data" sidebar on the right, this is where the tables' fields can be found. Each table has many fields which can be viewed.
+3. For example, with a player table, try checking off "Points" and "GameDate". Set GameDate to Y-axis and Points to the X-Axis. Finally 'build visual' as a 'Line chart'.
+4. Analyze visual or add to it with more stats from same or different player. Or even try visualizing the data with a different visual. What can you conclude from this?
+
+
