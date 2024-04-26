@@ -278,11 +278,14 @@ az container create --resource-group <resource_group_name> --name <container_ins
 1. Report starts off with no visuals until you decide on what data you want to include and how you want to display it.
 2. Click on "Data" sidebar on the right, this is where the tables' fields can be found. Each table has many fields which can be viewed.
 3. For example, with a player table, try checking off "Points" and "GameDate". Set GameDate to Y-axis and Points to the X-Axis. Finally 'build visual' as a 'Line chart'.
-4. Analyze visual or add to it with more stats from same or different player. Or even try visualizing the data with a different visual. What can you conclude from this?
 
+![Giannis Antetokounmpo points over time](./pointsbytimeGA.png)
 
+5. Analyze visual or add to it with more stats from same or different player. Or even try visualizing the data with a different visual. What can you conclude from this?
 - Now you are able to automate scripts that request data from an API and subsequently insert it into an Azure SQL Database. With that data you are able to make visuals in Power BI.
+
+## Notes
 - It should be noted that the script fetches data for the 2023-2024 regular season and since that has recently concluded, it will no longer update (unless the season is changed!).
-- If having issues with trying to access own server through Power BI, feel free to reach out to Raymond (raymondhr12@gmail.com) or Ashwin (ashwinkarpagam@gmail.com) so we can send over our server credentials discreetely. 
+- If having issues with trying to access own server through Power BI, feel free to reach out to Raymond (raymondhr12@gmail.com) or Ashwin (ashwinkarpagam@gmail.com) so we can send over our server credentials discreetely. With this you can access the same data on Power BI.
 
 
