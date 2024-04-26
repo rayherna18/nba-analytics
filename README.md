@@ -277,7 +277,7 @@ az container create --resource-group <resource_group_name> --name <container_ins
 ## Make Visuals with Power BI
 1. Report starts off with no visuals until you decide on what data you want to include and how you want to display it.
 2. Click on "Data" sidebar on the right, this is where the tables' fields can be found. Each table has many fields which can be viewed.
-3. For example, with a player table, try checking off "Points" and "GameDate". Set GameDate to Y-axis and Points to the X-Axis. Finally 'build visual' as a 'Line chart'.
+3. For example, with a player table, try checking off "Points" and "GameDate". Set GameDate to X-axis and Points to the Y-Axis. Finally 'build visual' as a 'Line chart'.
 
 ![Giannis Antetokounmpo points over time](./pointsbytimeGA.png)
 
