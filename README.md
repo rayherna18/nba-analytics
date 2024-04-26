@@ -4,7 +4,7 @@ Project for Cloud Computing (CSC4311) that uses containerized Python scripts on 
 
 ## RapidAPI Access 
 1. **Obtain API Key & Host**
-- Go to https://rapidapi.com/api-sports/api/api-nba/details to view details about this specific API.
+- Go to [API-NBA webpage](https://rapidapi.com/api-sports/api/api-nba/details) to view details about this specific API.
 - Head over to "Pricing" tab. Here you can subscribe to the 'Basic' tier and have limited free access to the API. This will allot you to a max of 100 calls per day. Our scripts don't come close to the daily limit.
 - Save API key & host URl. If lost, they can be viewed on the 'endpoints' tab on RapidAPI.
 
@@ -50,16 +50,16 @@ sudo apt install azure-cli
 ```
 sudo apt install python3
  ```
-- For Docker, follow instructions on official website: https://docs.docker.com/engine/install/ubuntu/
+- For Docker, follow instructions on [official website](https://docs.docker.com/engine/install/ubuntu/).
 - With that, you will be able to now create scripts and turn them into images.
 
 5. **Adding scripts**
-- First, create three directories: nba_teamdata, nba_playerdata, nba_staticdata
+- First, create three directories: nba_teamdata, nba_playerdata, nba_staticdata.
 - To transfer files, simply copy contents of source code and paste into code editor of file. Save to preserve changes.
-- nba_teamdata will have scripts found in 'team scripts'
-- nba_playerdata will have scripts found in 'player scripts' and 'static 'scripts'
+- nba_teamdata will have scripts found in 'team scripts'.
+- nba_playerdata will have scripts found in 'player scripts' and 'static 'scripts'.
 - nba_staticdata will have scripts found in 'static scripts'.
-- Each directory will have a Dockerfile. Remember to set all sensitive information (api key, host url, server credentials etc) in the Dockerfile. The players Dockerfile looks like
+- Each directory will have a Dockerfile. Remember to set all sensitive information (api key, host url, server credentials etc) in the Dockerfile. The players Dockerfile looks like...
 ```
 # Use official Python runtime as a parent image
 FROM python:3.8-slim
@@ -204,26 +204,26 @@ python-dotenv==0.19.1
 
 ## Automate Scripts
 1. Make Container Registry (CR)
-- Return to Azure website and search 'Container Registry'
+- Return to Azure website and search 'Container Registry'.
 - Select 'Create' and fill out form (for the example we called it 'nbadockerikmages'). Like always assign to your Resource Group.
 - Select the most basic plan and Create.
-- Save credentials (registry name + password key(s))
+- Save credentials (registry name + password key(s)).
 2. Build Docker Images
-- Use following command to build nba-playerstats image
+- Use following command to build nba-playerstats image:
 ```
 sudo docker build -t [registeryname].azurecr.io/nba-playerstats:latest .
 ```
 
-- Use following command to build nba-teamstats image
+- Use following command to build nba-teamstats image:
 ```
 sudo docker build -t [registeryname].azurecr.io/nba-teamstats:latest .
 ```
-- Use following command to build nba-staticstats image
+- Use following command to build nba-staticstats image:
 ```
 sudo docker build -t [registeryname].azurecr.io/nba-staticstats:latest .
 ```
 3. Login to Container Register on CLI
-- Enter the following command. You will be prompted to enter your registry's name and a valid password (check your access keys in your registry's settings)
+- Enter the following command. You will be prompted to enter your registry's name and a valid password (check your access keys in your registry's settings).
 ```
 sudo docker login [registeryname].azurecr.io
 ```
@@ -246,7 +246,7 @@ az container create --resource-group <resource_group_name> --name <container_ins
     --ports 80 \
 ```
 6. Create Logic App
-- Return to Azure website and search 'Logic Apps' in search bar
+- Return to Azure website and search 'Logic Apps' in search bar.
 - Select 'Add' on Logic Apps page.
 - Fill out form, putting the same Resource Group as other resources have.
 - Set 'Publish' to 'Workflow'. Disable Zone Redundancy. 
@@ -256,9 +256,9 @@ az container create --resource-group <resource_group_name> --name <container_ins
 - Create Logic App when all necessary fields are filled.
 
 7. Automate with Logic App
-- Go to Logic App and view 'Logic App Designer' under 'Development Tools'
+- Go to Logic App and view 'Logic App Designer' under 'Development Tools'.
 - Click on the (+) sign to add a Trigger. This is what will cause the scripts to run.
-- Set Trigger to be "Recurrence", "Interval" set to "1", "Frequency" set to "Day", set "Timezone" to "Eastern Time" and "At These Hours" to "2". Save
+- Set Trigger to be "Recurrence", "Interval" set to "1", "Frequency" set to "Day", set "Timezone" to "Eastern Time" and "At These Hours" to "2". Save this.
 - Add Action to "Azure Container Instance", specifically "Start containers in container group".
 - Provide subscription id, the resource group the CI is in and its name. Save and repeat for both instances.
 
@@ -268,7 +268,7 @@ az container create --resource-group <resource_group_name> --name <container_ins
 
 1. Download [Power BI](https://powerbi.microsoft.com/en-us/desktop/) if not already installed (Only available for Windows).
 2. Launch Power BI.
-3. Open new Report. When prompted to 'Add data to your report' select 'Import data from SQL server'
+3. Open new Report. When prompted to 'Add data to your report' select 'Import data from SQL server'.
 4. Enter the server name and database name respectively (found on Azure).
 5. Enter login credentials for the Azure SQL server (username + password). Verify that 'data connectivity mode' is set to 'Import'.
 6. If set up correctly, a pop up window will appear with all the tables you have currently stored on the database. Check off the tables you are interested in seeing statistics for.
