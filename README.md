@@ -266,7 +266,7 @@ az container create --resource-group <resource_group_name> --name <container_ins
 
 ## Import Data into Power BI
 
-1. Download [PowerBI](https://powerbi.microsoft.com/en-us/desktop/) if not already installed (Only available for Windows).
+1. Download [Power BI](https://powerbi.microsoft.com/en-us/desktop/) if not already installed (Only available for Windows).
 2. Launch Power BI.
 3. Open new Report. When prompted to 'Add data to your report' select 'Import data from SQL server'
 4. Enter the server name and database name respectively (found on Azure).
